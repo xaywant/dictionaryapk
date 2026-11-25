@@ -1,0 +1,10 @@
+{
+  "appId": "io.github.xaywant.dictionary",
+  "appName": "Dictionary",
+  "webDir": "www",
+  "backgroundColor": "#000000",
+  "server": { "androidScheme": "https" },
+  "plugins": {
+    "StatusBar": { "style": "DARK", "backgroundColor": "#000000", "overlaysWebView": false }
+  }
+}
