@@ -482,6 +482,10 @@ apply();landing();restore();
 {const OK=["saved","settings","appearance","font","defs"],sv=store.get("dict-view","home"),lv=restored&&OK.includes(here().v)?here().v:sv;
 if(OK.includes(lv)){if(restored&&here().v==="home"){let v=lv;while(v){pend.unshift(v);v=PARENT[v]}}go(lv)}}
 
+/* phone back button: go back one step at a time, close the app only from the first screen */
+(function(){const A=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.App;if(!A)return;
+A.addListener("backButton",()=>{if(!$("#dlg").hidden){$("#dn").click();return}if(idx>0)history.back();else A.exitApp()})})();
+
 /* pull down from the top of any screen to refresh */
 (function(){const p=$("#ptr");let y0=0,dy=0,on=false;const GO=85;
 addEventListener("touchstart",e=>{on=scrollY<=0&&e.touches.length===1&&$("#dlg").hidden&&!e.target.closest(".cards,input,.rng");y0=e.touches[0].clientY;dy=0},{passive:true});
